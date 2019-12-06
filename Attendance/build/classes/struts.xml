@@ -1,0 +1,44 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<!--Insert Data in database-->
+<package name="Pack" extends="struts-default">
+<action name="insert" class="Pack.InsertAction">
+<result name="success">/successInsert.jsp</result>
+<result name="error">/insert.jsp</result>
+</action>
+<!--All data fetch on the browser in tabular form-->
+<action name="alldatafetch" class="Pack.FetchAction">
+<result name="success">/alldatafetch.jsp</result>
+</action>
+<!--Name wise data fetch on the browser in tabular form-->
+<action name="nameFetch" class="Pack.FetchAction" method="nameFetch">
+<result name="success">/alldatafetch.jsp</result>
+</action>
+<!--Name wise update data in the database table-->
+<action name="fetch" class="Pack.FetchAction" method="nameFetch">
+<result name="success">/updateFetch.jsp</result>
+</action>
+<action name="update" class="Pack.FetchAction" method="update">
+<result name="success">/index.jsp</result>
+<result name="input">/fetch.jsp</result>
+<result name="error">/fetch.jsp</result>
+</action>
+<!--Row wise delete data in the database table-->
+<action name="rowdatadelete" class="Pack.FetchAction">
+<result name="success">/deletedatafetch.jsp</result>
+</action>
+<action name="delete" class="Pack.FetchAction" method="delete">
+<result name="success" type="chain">rowdatadelete</result>
+</action>
+<!--Name wise delete data in the database table-->
+<action name="nameDelete" class="Pack.FetchAction" method="nameFetch">
+<result name="success">/nameDeleteFetch.jsp</result>
+</action>
+<action name="delete1" class="Pack.FetchAction" method="delete">
+<result name="success">/nameDelete.jsp</result>
+</action>
+</package>
+</struts> 
